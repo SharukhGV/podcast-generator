@@ -12,7 +12,7 @@ const EntryList = () => {
 
   const fetchEntries = async () => {
     try {
-      const response = await axios.get('');
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/entries`);
       setEntries(response.data);
     } catch (error) {
       console.error('Error fetching entries:', error);
