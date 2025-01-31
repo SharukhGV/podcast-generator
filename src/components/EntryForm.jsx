@@ -27,7 +27,7 @@ const EntryForm = ({ entryId = null }) => {
 
   const fetchEntry = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/entries/${entryId}`);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/entries/${entryId}`);
       setContent(response.data.content);
       if (response.data.file_path) {
         setAudioPreviewUrl(response.data.file_path);
@@ -161,9 +161,9 @@ const EntryForm = ({ entryId = null }) => {
 
     try {
       if (entryId) {
-        await axios.put(`http://localhost:5000/api/entries/${entryId}`, formData);
+        await axios.put(`${import.meta.env.VITE_BACKEND}/api/entries/${entryId}`, formData);
       } else {
-        await axios.post('http://localhost:5000/api/entries', formData);
+        await axios.post(`${import.meta.env.VITE_BACKEND}/api/entries`, formData);
       }
       
       // Reset form

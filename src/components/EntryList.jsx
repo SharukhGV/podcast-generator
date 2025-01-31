@@ -12,7 +12,7 @@ const EntryList = () => {
 
   const fetchEntries = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/entries');
+      const response = await axios.get('');
       setEntries(response.data);
     } catch (error) {
       console.error('Error fetching entries:', error);
@@ -21,7 +21,7 @@ const EntryList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/entries/${id}`);
+      await axios.delete(`${import.meta.env.VITE_BACKEND}/api/entries/${id}`);
       fetchEntries();
     } catch (error) {
       console.error('Error deleting entry:', error);

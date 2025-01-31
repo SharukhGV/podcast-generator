@@ -32,7 +32,7 @@ const EntryFormEdit = () => {
   const fetchEntry = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/entries/${id}`);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/entries/${id}`);
       const entry = response.data;
       
       setContent(entry.content);
@@ -219,7 +219,7 @@ const EntryFormEdit = () => {
         formData.append('audio', audioFile);
       }
 
-      await axios.put(`http://localhost:5000/api/entries/${id}`, formData);
+      await axios.put(`${import.meta.env.VITE_BACKEND}/api/entries/${id}`, formData);
       navigate('/');
     } catch (error) {
       console.error('Error updating entry:', error);
@@ -231,7 +231,7 @@ const EntryFormEdit = () => {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this entry?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/entries/${id}`);
+        await axios.delete(`${import.meta.env.VITE_BACKEND}/api/entries/${id}`);
         navigate('/');
       } catch (error) {
         console.error('Error deleting entry:', error);
